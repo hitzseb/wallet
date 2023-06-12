@@ -37,5 +37,6 @@ com\hitzseb\wallet\service\TokenService.class
 com\hitzseb\wallet\controller\AuthenticationController.class
 com\hitzseb\wallet\controller\OperationController.class
 com\hitzseb\wallet\responses\AuthenticationResponse.class
+com\hitzseb\wallet\controller\HealthCheckController.class
 com\hitzseb\wallet\enums\OperationType.class
 com\hitzseb\wallet\repo\OperationRepo.class

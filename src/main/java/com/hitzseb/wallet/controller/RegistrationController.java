@@ -15,7 +15,7 @@ import com.hitzseb.wallet.dto.Credentials;
 
 @RestController
 @RequestMapping("/api/v1/registration")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("https://hitzseb-chainsawpedia.web.app/")
 @RequiredArgsConstructor
 public class RegistrationController {
 

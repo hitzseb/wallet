@@ -20,7 +20,7 @@ import com.hitzseb.wallet.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("https://hitzseb-chainsawpedia.web.app/")
 @RequiredArgsConstructor
 public class AuthenticationController {
 

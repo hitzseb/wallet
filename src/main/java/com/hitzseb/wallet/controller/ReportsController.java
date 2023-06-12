@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("https://hitzseb-chainsawpedia.web.app/")
 @RequiredArgsConstructor
 public class ReportsController {
 
