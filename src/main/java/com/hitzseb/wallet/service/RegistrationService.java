@@ -34,7 +34,7 @@ public class RegistrationService {
                 )
         );
 
-        String link = "https://hitzseb-chainsawpedia.web.app/api/v1/registration/confirm?token=" + token;
+        String link = "https://hitzseb-wallet-wizard.web.app/api/v1/registration/confirm?token=" + token;
         emailSender.send(
                 request.email(),
                 buildEmail(request.email(), link));

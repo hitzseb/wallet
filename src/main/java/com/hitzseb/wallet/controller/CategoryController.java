@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/category")
-@CrossOrigin("https://hitzseb-chainsawpedia.web.app/")
+@CrossOrigin("https://hitzseb-wallet-wizard.web.app/")
 @RequiredArgsConstructor
 public class CategoryController {
 
