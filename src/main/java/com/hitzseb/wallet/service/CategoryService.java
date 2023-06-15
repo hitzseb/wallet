@@ -10,8 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +57,20 @@ public class CategoryService {
     public boolean categoryBelongsToUser(Long userId, Long categoryId) {
         Category category = categoryRepo.findById(categoryId).orElse(null);
         return category != null && category.getUser().getId().equals(userId);
+    }
+
+    public void createBasicCategories(User user) {
+        Set<Category> categorySet = new HashSet<>();
+
+        String[] categoryNames = {"Food", "Services", "Leisure", "Education", "Transport", "Work"};
+
+        for (String categoryName : categoryNames) {
+            Category category = new Category();
+            category.setName(categoryName);
+            category.setUser(user);
+            categorySet.add(category);
+        }
+        categoryRepo.saveAll(categorySet);
     }
 
 }

@@ -8,6 +8,7 @@ import com.hitzseb.wallet.enums.UserRole;
 import java.time.LocalDateTime;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,9 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final TokenService tokenService;
     private final EmailSender emailSender;
+
+    @Value("${server.url}")
+    private String serverUrl;
 
 	public String register(Credentials request) {
         boolean isValidEmail = emailValidator.
@@ -34,7 +38,7 @@ public class RegistrationService {
                 )
         );
 
-        String link = "https://hitzseb-wallet-wizard.onrender.com/api/v1/registration/confirm?token=" + token;
+        String link = serverUrl + "api/v1/registration/confirm?token=" + token;
         emailSender.send(
                 request.email(),
                 buildEmail(request.email(), link));

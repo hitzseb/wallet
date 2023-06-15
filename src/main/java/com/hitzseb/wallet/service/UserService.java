@@ -21,6 +21,7 @@ public class UserService implements UserDetailsService {
 	private final UserRepo userRepo;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	private final TokenService tokenService;
+	private final CategoryService categoryService;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -58,6 +59,8 @@ public class UserService implements UserDetailsService {
 
 		user.setPassword(encodedPassword);
 		userRepo.save(user);
+
+		categoryService.createBasicCategories(user);
 
 		String token = UUID.randomUUID().toString();
 		Token confirmationToken = new Token(token, LocalDateTime.now(),
