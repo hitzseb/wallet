@@ -10,7 +10,6 @@ import com.hitzseb.wallet.repo.OperationRepo;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.dao.DataAccessException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -24,6 +23,7 @@ public class OperationService {
 
     private final OperationRepo operationRepo;
     private final CategoryRepo categoryRepo;
+    private final UserService userService;
 
     public List<Operation> getAllOperations(Optional<OperationType> type,
                                             Optional<Long> categoryId,
@@ -33,7 +33,7 @@ public class OperationService {
             category = categoryRepo.findById(categoryId.get())
                     .orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + categoryId));
         }
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getCurrentUser();
         return operationRepo.findAllByTypeAndCategoryAndDateAndOrder(
                 user, type.orElse(null), category, date.orElse(null));
     }
@@ -49,7 +49,7 @@ public class OperationService {
 
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + categoryId));
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getCurrentUser();
 
         Operation operation = new Operation();
         operation.setDescription(description);
@@ -104,8 +104,8 @@ public class OperationService {
         }
     }
 
-    public boolean operationBelongsToUser(Long userId, Long categoryId) {
-        Operation operation = operationRepo.findById(categoryId).orElse(null);
+    public boolean operationBelongsToUser(Long userId, Long operationId) {
+        Operation operation = operationRepo.findById(operationId).orElse(null);
         return operation != null && operation.getUser().getId().equals(userId);
     }
 

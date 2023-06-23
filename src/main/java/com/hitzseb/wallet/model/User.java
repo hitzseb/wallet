@@ -1,7 +1,7 @@
 package com.hitzseb.wallet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.hitzseb.wallet.enums.UserRole;
+import com.hitzseb.wallet.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +24,7 @@ public class User implements UserDetails {
 	private String email;
 	private String password;
 	@Enumerated(EnumType.STRING)
-	private UserRole role;
+	private Role role;
 	private Boolean enabled = false;
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -33,7 +33,7 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	List<Operation> operations;
 
-	public User(String email, String password, UserRole role) {
+	public User(String email, String password, Role role) {
 		this.email = email;
 		this.password = password;
 		this.role = role;

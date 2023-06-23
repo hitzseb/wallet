@@ -1,5 +1,5 @@
 package com.hitzseb.wallet.enums;
 
-public enum UserRole {
+public enum Role {
     USER
 }

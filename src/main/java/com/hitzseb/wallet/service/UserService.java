@@ -1,13 +1,19 @@
 package com.hitzseb.wallet.service;
 
+import com.hitzseb.wallet.model.Category;
 import com.hitzseb.wallet.model.Token;
 import com.hitzseb.wallet.model.User;
+import com.hitzseb.wallet.repo.CategoryRepo;
 import com.hitzseb.wallet.repo.UserRepo;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +27,7 @@ public class UserService implements UserDetailsService {
 	private final UserRepo userRepo;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	private final TokenService tokenService;
-	private final CategoryService categoryService;
+	private final CategoryRepo categoryRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -60,7 +66,7 @@ public class UserService implements UserDetailsService {
 		user.setPassword(encodedPassword);
 		userRepo.save(user);
 
-		categoryService.createBasicCategories(user);
+		createBasicCategories(user);
 
 		String token = UUID.randomUUID().toString();
 		Token confirmationToken = new Token(token, LocalDateTime.now(),
@@ -72,6 +78,25 @@ public class UserService implements UserDetailsService {
 
 	public int enableUser(String email) {
 		return userRepo.enableUser(email);
+	}
+
+	public User getCurrentUser() {
+		return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
+
+	public void createBasicCategories(User user) {
+
+		String[] categoryNames = {"Food", "Services", "Leisure", "Education", "Transport", "Work"};
+
+		Set<Category> categorySet = Arrays.stream(categoryNames)
+				.map(categoryName -> {
+					Category category = new Category();
+					category.setName(categoryName);
+					category.setUser(user);
+					return category;
+				})
+				.collect(Collectors.toSet());
+		categoryRepo.saveAll(categorySet);
 	}
 
 }

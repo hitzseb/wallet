@@ -3,7 +3,7 @@ package com.hitzseb.wallet.service;
 import com.hitzseb.wallet.dto.Credentials;
 import com.hitzseb.wallet.model.Token;
 import com.hitzseb.wallet.model.User;
-import com.hitzseb.wallet.enums.UserRole;
+import com.hitzseb.wallet.enums.Role;
 
 import java.time.LocalDateTime;
 
@@ -34,7 +34,7 @@ public class RegistrationService {
         String token = userService.signUpUser(new User(
                         request.email(),
                         request.password(),
-                        UserRole.USER
+                        Role.USER
                 )
         );
 

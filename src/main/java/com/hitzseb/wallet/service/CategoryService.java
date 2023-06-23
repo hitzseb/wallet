@@ -16,15 +16,18 @@ import java.util.*;
 @RequiredArgsConstructor
 public class CategoryService {
     private final CategoryRepo categoryRepo;
+    private final UserService userService;
+
     public List<Category> getAllCategories() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getCurrentUser();
         return categoryRepo.findByUser(user);
     }
+
     public Category saveCategory(Optional<String> name) throws IllegalArgumentException {
         if (!name.isPresent()) {
             throw new IllegalArgumentException("Parameter name is empty");
         }
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getCurrentUser();
         Category category = new Category();
         category.setName(name.get());
         category.setUser(user);
@@ -57,20 +60,6 @@ public class CategoryService {
     public boolean categoryBelongsToUser(Long userId, Long categoryId) {
         Category category = categoryRepo.findById(categoryId).orElse(null);
         return category != null && category.getUser().getId().equals(userId);
-    }
-
-    public void createBasicCategories(User user) {
-        Set<Category> categorySet = new HashSet<>();
-
-        String[] categoryNames = {"Food", "Services", "Leisure", "Education", "Transport", "Work"};
-
-        for (String categoryName : categoryNames) {
-            Category category = new Category();
-            category.setName(categoryName);
-            category.setUser(user);
-            categorySet.add(category);
-        }
-        categoryRepo.saveAll(categorySet);
     }
 
 }
