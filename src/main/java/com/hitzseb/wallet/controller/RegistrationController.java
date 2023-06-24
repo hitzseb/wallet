@@ -15,6 +15,7 @@ import com.hitzseb.wallet.dto.Credentials;
 
 @RestController
 @RequestMapping("/api/v1/registration")
+@CrossOrigin("https://hitzseb-wallet-wizard.web.app/")
 @RequiredArgsConstructor
 public class RegistrationController {
 
@@ -32,7 +33,7 @@ public class RegistrationController {
 	@Operation(summary = "Enables a newly registered user.",
 			description = "Activates a newly registered user account," +
 					" given a valid and non-expired confirmation token.")
-	@GetMapping(path = "confirm")
+	@GetMapping("/confirm")
 	public String confirm(@RequestParam("token") String token) {
 		return registrationService.confirmToken(token);
 	}
