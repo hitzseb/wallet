@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/operation")
-@CrossOrigin("https://hitzseb-wallet-wizard.web.app/")
+@CrossOrigin("${client.url}")
 @RequiredArgsConstructor
 public class OperationController {
     private final OperationService operationService;

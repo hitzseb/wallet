@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin("https://hitzseb-wallet-wizard.web.app/")
+@CrossOrigin("${client.url}")
 @RequiredArgsConstructor
 public class ReportsController {
 

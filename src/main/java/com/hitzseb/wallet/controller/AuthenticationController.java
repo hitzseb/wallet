@@ -16,13 +16,15 @@ import com.hitzseb.wallet.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin("https://hitzseb-wallet-wizard.web.app/")
+@CrossOrigin("${client.url}")
 @RequiredArgsConstructor
 public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UserService userService;
+
+//    @Value("${client.url}")
 
     @Operation(summary = "Authenticates an user. ",
             description = "Takes a JSON with an email and a password." +

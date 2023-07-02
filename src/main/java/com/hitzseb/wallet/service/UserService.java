@@ -86,7 +86,7 @@ public class UserService implements UserDetailsService {
 
 	public void createBasicCategories(User user) {
 
-		String[] categoryNames = {"Food", "Services", "Leisure", "Education", "Transport", "Work"};
+		String[] categoryNames = {"Comida", "Servicios", "Salidas", "Educación", "Transporte", "Trabajo"};
 
 		Set<Category> categorySet = Arrays.stream(categoryNames)
 				.map(categoryName -> {
