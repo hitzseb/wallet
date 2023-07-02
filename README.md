@@ -46,6 +46,8 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.connectiontimeout=5000
 spring.mail.properties.mail.smtp.timeout=3000
 spring.mail.properties.mail.smtp.writetimeout=5000
+server.url=http://localhost:10000/
+client.url=http://localhost:4200/
 ```
 If you mean to use a Gmail address, you must provide a special app password which you can obtain through your Gmail account security.
 
@@ -60,7 +62,7 @@ The application was built using the following technologies:
 - Spring Data JPA
 - Spring Security
 - Java Mail Sender
-- Springdoc
+- Swagger
 - Lombok
 - JWT
 - H2
