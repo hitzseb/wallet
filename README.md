@@ -46,6 +46,7 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.connectiontimeout=5000
 spring.mail.properties.mail.smtp.timeout=3000
 spring.mail.properties.mail.smtp.writetimeout=5000
+jwt.secret=${SECRET_KEY}
 server.url=http://localhost:10000/
 client.url=http://localhost:4200/
 ```
