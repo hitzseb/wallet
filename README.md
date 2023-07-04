@@ -1,4 +1,4 @@
-# walletApi
+# Wallet Api
 This is a Spring RESTful API that provides services for a personal wallet tracker application.
 
 ## Getting Started
@@ -25,7 +25,7 @@ mvn clean
 This will remove any previously compiled files and dependencies, and should help to resolve any errors you may be experiencing.
 
 ## application.properties
-Note that the file applications.properties is missing and you'll have to add it. Here's an example with the neccesary properties:
+Note that the file applications.properties is missing, and you'll have to add it. Here's an example with the necessary properties:
 ```
 server.error.include-message=always
 server.error.include-binding-errors=always
