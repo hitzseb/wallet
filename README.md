@@ -1,4 +1,4 @@
-# Wallet Api
+# Wallet Wizard Api
 This is a Spring RESTful API that provides services for a personal wallet tracker application.
 
 ## Getting Started
