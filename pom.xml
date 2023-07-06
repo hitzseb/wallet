@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hitzseb</groupId>
-    <artifactId>walletWizardApi</artifactId>
+    <artifactId>wallet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>walletWizardApi</name>
     <description>walletWizardApi</description>

@@ -1,5 +1,5 @@
 FROM amazoncorretto:17
 MAINTAINER hitzseb
-COPY target/walletWizardApi-0.0.1-SNAPSHOT.jar walletWizardApi
-ENTRYPOINT ["java", "-jar","walletWizardApi"]
+COPY target/wallet-0.0.1-SNAPSHOT.jar wallet
+ENTRYPOINT ["java", "-jar","wallet"]
 EXPOSE 10000
