@@ -11,9 +11,6 @@ target/test-classes
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-# Sensible data
-application.properties
-
 ### STS ###
 .apt_generated
 .classpath
