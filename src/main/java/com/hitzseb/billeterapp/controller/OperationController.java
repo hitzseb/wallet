@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/operation")
-@CrossOrigin("https://hitzseb-billeterapp.web.app/")
+@CrossOrigin("http://localhost:4200/")
 @RequiredArgsConstructor
 public class OperationController {
 
@@ -29,8 +29,8 @@ public class OperationController {
 
     @io.swagger.v3.oas.annotations.Operation(summary = "Retrieves operations for a logged-in user.",
             description = "Returns a list of operations related with the logged-in user." +
-                    " Results can be optionally filtered by operation type, category, and date." +
-                    " The `type`, `categoryId` and `date` parameters are used to specify filters." +
+                    " Results can be optionally filtered by operation transaction, category, and date." +
+                    " The `transaction`, `categoryId` and `date` parameters are used to specify filters." +
                     " If no filters are provided, all operations from the user will be returned.")
     @GetMapping("/all")
     @PreAuthorize("@operationService.operationBelongsToUser(authentication.principal.id, #id)")
@@ -49,7 +49,7 @@ public class OperationController {
 
     @io.swagger.v3.oas.annotations.Operation(summary = "Creates a new operation.",
             description = "Creates a new operation with the specified details." +
-                    " The `description`, `amount`, `type`, `categoryId`, and `date` parameters" +
+                    " The `description`, `amount`, `transaction`, `categoryId`, and `date` parameters" +
                     " are used to specify the operation details." +
                     " Returns a response with a message indicating" +
                     " that the operation was created successfully" +
@@ -71,7 +71,7 @@ public class OperationController {
     @io.swagger.v3.oas.annotations.Operation(summary = "Updates an existing operation.",
             description = "Updates an existing operation with the specified ID and details." +
                     " The `id` path variable is used to identify the operation to update," +
-                    " and the `description`, `amount`, `type`, `categoryId`, and `date`" +
+                    " and the `description`, `amount`, `transaction`, `categoryId`, and `date`" +
                     " parameters are used to specify the updated operation details." +
                     " Returns a response with a message indicating that the operation" +
                     " was updated successfully and the updated operation details in the response body." +

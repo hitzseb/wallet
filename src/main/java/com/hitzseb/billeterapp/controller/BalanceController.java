@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin("https://hitzseb-billeterapp.web.app/")
+@CrossOrigin("http://localhost:4200/")
 @RequiredArgsConstructor
 public class BalanceController {
 

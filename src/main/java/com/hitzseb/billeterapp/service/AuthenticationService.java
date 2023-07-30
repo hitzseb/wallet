@@ -24,7 +24,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final EmailSender emailSender;
 //    @Value("${server.url}")
-    private String serverUrl = "https://hitzseb-billeterapp.onrender.com/";
+    private String serverUrl = "http://localhost:8080/";
 
     public AuthenticationResponse register(Credential credential) {
         String email = credential.email();
