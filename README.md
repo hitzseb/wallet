@@ -63,7 +63,7 @@ The application was built using the following technologies:
 - Spring Data JPA
 - Spring Security
 - Java Mail Sender
-- Swagger
+- Springdoc
 - Lombok
-- JWT
+- JJWT
 - H2
